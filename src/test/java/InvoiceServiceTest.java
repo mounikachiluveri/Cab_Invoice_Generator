@@ -1,4 +1,5 @@
 import cabinvoice.InvoiceGenerator;
+import cabinvoice.InvoiceSummary;
 import cabinvoice.Ride;
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,9 +35,16 @@ public class InvoiceServiceTest {
         int time = 1;
         Ride[] rides = {new Ride(2.0, 1),
                 new Ride(2.0, 1),
-                new Ride(0.1, 1)
         };
-        double fare = invoiceGenerator.calculateFare(rides);
-        Assert.assertEquals(47, fare, 0.0);
+        InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary exceptedInvoiceSummary= new InvoiceSummary(2,30.0);
+        Assert.assertEquals(exceptedInvoiceSummary,summary);
     }
 }
+
+
+
+
+
+
+
