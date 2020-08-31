@@ -1,15 +1,14 @@
 package cabinvoice;
 
 public class InvoiceSummary {
-
-    private final int numberOfRides;
+    private final int numOfRides;
     private final double totalFare;
     private final double averageFare;
 
-    public InvoiceSummary(int numberOfRides, double totalFare) {
-        this.numberOfRides = numberOfRides;
+    public InvoiceSummary(int numOfRides, double totalFare) {
+        this.numOfRides = numOfRides;
         this.totalFare = totalFare;
-        this.averageFare = this.totalFare / this.numberOfRides;
+        this.averageFare = this.totalFare / this.numOfRides;
     }
 
     @Override
@@ -17,7 +16,7 @@ public class InvoiceSummary {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceSummary that = (InvoiceSummary) o;
-        return numberOfRides == that.numberOfRides &&
+        return numOfRides == that.numOfRides &&
                 Double.compare(that.totalFare, totalFare) == 0 &&
                 Double.compare(that.averageFare, averageFare) == 0;
     }

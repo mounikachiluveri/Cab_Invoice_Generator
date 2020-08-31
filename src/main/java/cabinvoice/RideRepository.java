@@ -6,20 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RideRepository {
-    static Map<String, ArrayList<Ride>> userRides = new HashMap<>();
+    static Map<String, ArrayList<Ride>> userRidesMap = new HashMap<>();
 
-    public RideRepository() {
-        this.userRides = new HashMap<>();
+    public static void addRides(String userId, Ride[] rides){
+        userRidesMap.put(userId, new ArrayList<>((Arrays.asList(rides))));
     }
 
-    public void addRides(String userId, Ride[] rides) {
-        ArrayList<Ride> rideList = this.userRides.get(userId);
-        if (rideList == null) {
-            this.userRides.put(userId, new ArrayList<>(Arrays.asList(rides)));
-        }
-    }
-
-    public Ride[] getRides(String userId) {
-        return this.userRides.get(userId).toArray(new Ride[0]);
+    public static Ride[] getRides(String userId) {
+        return userRidesMap.get(userId).toArray(new Ride[0]);
     }
 }
