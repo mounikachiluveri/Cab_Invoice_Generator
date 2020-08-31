@@ -39,8 +39,16 @@ public class InvoiceServiceTest {
         Assert.assertEquals(expectedInvoiceSummary, summary);
     }
 
-
-
+    @Test
+    public void givenUserIdMultipleRides_ShouldReturnInvoiceSummary() {
+        Ride[] rides = {new Ride(2.0,5),
+                new Ride(0.1,1),
+        };
+        invoiceGenerator.addRide("Mounika",rides);
+        InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2,30.0);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
+    }
 }
 
 
