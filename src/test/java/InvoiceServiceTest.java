@@ -30,16 +30,17 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenMultipleRidesShould_ShouldReturnInvoiceSummary() {
-        double distance = 0.1;
-        int time = 1;
-        Ride[] rides = {new Ride(2.0, 1),
-                new Ride(2.0, 1),
+    public void givenMultipleRides_ShouldReturnInvoiceSummary() {
+        Ride[] rides = {new Ride(2.0,5),
+                new Ride(0.1,1),
         };
         InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
-        InvoiceSummary exceptedInvoiceSummary= new InvoiceSummary(2,30.0);
-        Assert.assertEquals(exceptedInvoiceSummary,summary);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2,30.0);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
     }
+
+
+
 }
 
 
