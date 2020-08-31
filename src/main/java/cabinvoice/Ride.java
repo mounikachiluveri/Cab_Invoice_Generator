@@ -1,4 +1,5 @@
 package cabinvoice;
+
 public class Ride {
     public int time;
     public double distance;
