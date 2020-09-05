@@ -7,6 +7,7 @@ public class InvoiceService {
         return Math.max(type.minFare, totalFare);
     }
 
+    //to generate invoice at the end of the month
     public InvoiceSummary calculateFare(Ride[] rides) {
         double totalFare = 0;
         for (Ride ride : rides) {
@@ -19,11 +20,9 @@ public class InvoiceService {
         RideRepository.addRides(userId, rides);
     }
 
+    //to get the invoice summary of a user
     public InvoiceSummary getInvoiceSummary(String userId) {
         Ride[] rides = RideRepository.getRides(userId);
         return this.calculateFare(rides);
-    }
-
-    public void setRideRepository(RideRepository rideRepository) {
     }
 }

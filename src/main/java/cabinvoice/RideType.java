@@ -1,7 +1,8 @@
 package cabinvoice;
 
 public enum RideType {
-    NORMAL(10, 1, 5), PREMIUM(15, 2, 20);
+    NORMAL(10, 1, 5),
+    PREMIUM(15, 2, 20);
 
     public final double minimumCostPerKM;
     public final int costPerTime;
