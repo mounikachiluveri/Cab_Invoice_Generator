@@ -81,4 +81,12 @@ public class InvoiceServiceTest {
         InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 67.0);
         Assert.assertNotEquals(expectedInvoiceSummary, summary);
     }
+
+    @Test
+    public void givenDistanceAndTime_IfTypePremium_ShouldReturnMinimumFare() {
+        double distance = 0.1;
+        int time = 1;
+        double fare = invoiceService.calculateFare(RideType.PREMIUM, distance, time);
+        Assert.assertEquals(20, fare, 0.0);
+    }
 }
