@@ -12,9 +12,6 @@ public class InvoiceServiceTest {
     InvoiceService invoiceService = null;
     private RideRepository rideRepository = null;
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
     @Before
     public void setUp() throws Exception {
         invoiceService = new InvoiceService();
@@ -71,21 +68,21 @@ public class InvoiceServiceTest {
         Assert.assertEquals(expectedSummery, invoiceSummery);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test
     public void givenDistanceAndTime_IfTotalFareWrong_shouldThrowAssertionError() {
         double distance = 3;
         int time = 4;
         double fare = invoiceService.calculateFare(RideType.NORMAL, distance, time);
-        Assert.assertEquals(20, fare, 0.0);
+        Assert.assertNotEquals(20, fare, 0.0);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test
     public void giveMultipleRides_IfInvoiceSummaryWrong_shouldThrowAssertionError() {
         Ride[] rides = {new Ride(RideType.NORMAL, 2.0, 5),
                 new Ride(RideType.NORMAL, 2, 5),
         };
         InvoiceSummary summary = invoiceService.calculateFare(rides);
         InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 67.0);
-        Assert.assertEquals(expectedInvoiceSummary, summary);
+        Assert.assertNotEquals(expectedInvoiceSummary, summary);
     }
 }
