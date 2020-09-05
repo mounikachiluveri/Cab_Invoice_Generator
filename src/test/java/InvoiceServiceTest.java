@@ -65,7 +65,7 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenDistanceAndTime_IfTotalFareWrong_shouldThrowAssertionError() {
+    public void givenDistanceAndTime_IfTotalFareWrong_shouldReturnNotEqual() {
         double distance = 3;
         int time = 4;
         double fare = invoiceService.calculateFare(RideType.NORMAL, distance, time);
@@ -73,7 +73,7 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void giveMultipleRides_IfInvoiceSummaryWrong_shouldThrowAssertionError() {
+    public void giveMultipleRides_IfInvoiceSummaryWrong_shouldReturnNotEqual() {
         Ride[] rides = {new Ride(RideType.NORMAL, 2.0, 5),
                 new Ride(RideType.NORMAL, 2, 5),
         };
