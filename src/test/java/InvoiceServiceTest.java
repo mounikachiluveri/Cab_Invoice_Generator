@@ -78,4 +78,14 @@ public class InvoiceServiceTest {
         double fare = invoiceService.calculateFare(RideType.NORMAL, distance, time);
         Assert.assertEquals(20, fare, 0.0);
     }
+
+    @Test(expected = AssertionError.class)
+    public void giveMultipleRides_IfInvoiceSummaryWrong_shouldThrowAssertionError() {
+        Ride[] rides = {new Ride(RideType.NORMAL, 2.0, 5),
+                new Ride(RideType.NORMAL, 2, 5),
+        };
+        InvoiceSummary summary = invoiceService.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 67.0);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
+    }
 }
